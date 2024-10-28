@@ -8,11 +8,11 @@ package medium
  * 输出: 6 ([4,-1,2,1])
  */
 fun maxSubArray(nums: IntArray): Int {
-    var maxSum = nums[0] // 记录最大子数组和
-    var currentSum = nums[0] // 记录当前子数组和
+    var maxSum = nums[0] // 记录最大子数组和, 初始为第1个元素
+    var currentSum = nums[0] // 记录当前子数组和, 初始为第1个元素
 
     for (i in 1..<nums.size) {
-        // 计算当前子数组和，要么继续累加，要么从当前元素重新开始
+        // 从数组第2个元素开始遍历, 遍历到当前元素时, 如果当前元素大于累加和, 则从当前元素开始重新计算累加和
         currentSum = maxOf(nums[i], currentSum + nums[i])
         // 更新全局最大子数组和
         maxSum = maxOf(maxSum, currentSum)
