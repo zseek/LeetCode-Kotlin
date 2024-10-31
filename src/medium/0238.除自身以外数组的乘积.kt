@@ -9,18 +9,20 @@ package medium
  */
 fun productExceptSelf(nums: IntArray): IntArray {
     val n = nums.size
-    val answer = IntArray(n)
+    val answer = IntArray(nums.size)
 
     // 计算前缀积
     var prefix = 1
     answer[0] = 1
-    for (i in 1..<n) {
-        prefix *= nums[i-1]
-        answer[i] = prefix // 暂存每个前缀积
+    for (i in nums.indices) {
+        if (i > 0) {
+            prefix *= nums[i - 1]
+            answer[i] = prefix // 暂存每个前缀积
+        }
     }
     // 计算后缀积
     var suffix = 1
-    for (i in n-1  downTo 0) {
+    for (i in nums.indices.reversed()) {
         if(i != n-1) { suffix *= nums[i+1] }
         answer[i] *= suffix // 前缀积 * 后缀积 得到结果answer
     }
