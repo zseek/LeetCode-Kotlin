@@ -7,9 +7,9 @@ package easy
  * 输入：intersectVal = 8, listA = [4,1,8,4,5], listB = [5,0,1,8,4,5], skipA = 2, skipB = 3
  * 输出：Intersected at '8'
  */
-class ListNode(var `val`: Int) {
-    var next: ListNode? = null
-}
+//class ListNode(var `val`: Int) {
+//    var next: ListNode? = null
+//}
 
 fun getIntersectionNode(headA: ListNode?, headB: ListNode?): ListNode? {
     if (headA == null || headB == null) return null
