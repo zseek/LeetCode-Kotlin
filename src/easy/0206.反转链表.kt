@@ -11,18 +11,23 @@ class ListNode(var `val`: Int) {
     var next: ListNode? = null
 }
 
+// 迭代法: 原始的链表时从左向右指向的, 通过将链表顺序逐步更改为从右向左指向, 实现链表的反转
 fun reverseList(head: ListNode?): ListNode? {
-    // 递归终止条件：链表为空或只有一个节点
-    if (head == null || head.next == null) {
-        return head
+    var curNode = head             // 当前处理的节点, 初始为头节点
+    var preNode: ListNode? = null  // 已反转部分的最后一个节点, 初始为null
+
+    if (curNode == null) return null // 如果链表为空则直接返回null
+
+    // 遍历整个链表
+    while (curNode != null) {
+        val nextNode = curNode.next // 保存当前节点的下一个节点
+        curNode.next = preNode      // 将当前节点的next反向指向preNode
+        preNode = curNode           // 将preNode移动到当前节点
+        curNode = nextNode          // 将curNode移动到下一个节点, 继续循环
     }
-
-    // 递归反转剩余链表，返回新的头节点
-    val newHead = reverseList(head.next)
-
-    // 反转当前节点和它的下一个节点的指向
-    head.next?.next = head // 将 head.next 的 next 指向当前节点 head
-    head.next = null // 将当前节点的 next 置为空，断开原始链接
-
-    return newHead // 返回反转后的新头节点
+    // 当循环结束时, preNode指向新的头节点
+    return preNode
 }
+
+
+
