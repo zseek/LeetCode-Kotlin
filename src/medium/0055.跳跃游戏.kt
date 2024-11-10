@@ -8,18 +8,16 @@ package medium
  * 输出: true
  */
 fun canJump(nums: IntArray): Boolean {
-    var maxReach = 0 // 当前能到达的最远位置
+    var maxReach = 0  // 记录当前能到达的最远位置
 
     for (i in nums.indices) {
-        // 如果当前位置 i 超过了当前能到达的最远位置 maxReach，返回 false
-        if (i > maxReach) {
-            return false
+        if (i > maxReach) {    // 当前索引已经超过了可达范围
+            return false       // 说明无法到达终点
         }
-        maxReach = maxOf(maxReach, i + nums[i]) // 更新maxReach
-        // 如果 maxReach 已经达到或超过了最后一个下标，返回 true
-        if (maxReach >= nums.size - 1) {
+        maxReach = maxOf(maxReach, i + nums[i])  // 更新最远可达位置
+        if (maxReach >= nums.lastIndex) {        // 检查是否能到达或超过最后一个位置
             return true
         }
     }
-    return false // 如果遍历结束后仍未达到最后一个下标，返回 false
+    return false  // 如果遍历完成还未返回，说明无法到达
 }
