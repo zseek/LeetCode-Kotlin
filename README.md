@@ -4,7 +4,6 @@
 ### 仓库说明
 
 - [x] 本仓库用于记录 LeetCode 练习题的解题思路和代码, 使用 Kotlin 语言进行编写, IntelliJ 进行构建, JDK17作为运行环境
-- [ ] LeetCode 练习题的Obsidian笔记可能更新不及时
 
 ### 仓库目录
 
