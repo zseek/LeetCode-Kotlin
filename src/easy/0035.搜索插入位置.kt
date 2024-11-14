@@ -12,8 +12,8 @@ fun searchInsert(nums: IntArray, target: Int): Int {
     var right = nums.size - 1
 
     while (left <= right) {
-        val mid = left + (right - left) / 2  // 防止溢出，计算中间位置
-        if (nums[mid] == target) {           // 找到目标值，返回其索引
+        val mid = left + (right - left) / 2  // 计算中间位置
+        if (nums[mid] == target) {           // 找到目标值,直接返回索引
             return mid
         } else if (nums[mid] < target) {     // 目标值在右半部分
             left = mid + 1
@@ -21,5 +21,5 @@ fun searchInsert(nums: IntArray, target: Int): Int {
             right = mid - 1
         }
     }
-    return left  // 未找到目标值，返回插入位置
+    return left  // 未找到目标值, 返回插入位置
 }
